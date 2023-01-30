@@ -28,52 +28,144 @@
         onclick="myFunction()"
       />
     </div>
-    <!-- <div class="p-5 bg-light text-white rounded">
-      <div class="container mt-2 p-4">
-        <div class="row">
-          <div class="col-md-4 text-center">
-            <img
-              src="/images/profilepic.jpg"
-              class="figure-img rounded"
-              alt="profile"
-            />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="container-fluid p-2 align-items-center">
+            <div class="d-flex justify-content-around">
+              <button
+                class="btn bg-success text-white btn-sm rounded-pill"
+                style="width: 2rem; height: 2rem"
+                data-bs-toggle="collapse"
+                data-bs-target="#company1"
+                aria-expanded="true"
+                aria-controls="company1"
+                onclick="stepFunction(event)"
+              >
+                1
+              </button>
+              <span
+                class="bg-success w-25 rounded mt-auto mb-auto me-1 ms-1"
+                style="height: 0.2rem"
+              >
+              </span>
+              <button
+                class="btn bg-success text-white btn-sm rounded-pill"
+                style="width: 2rem; height: 2rem"
+                data-bs-toggle="collapse"
+                data-bs-target="#company2"
+                aria-expanded="false"
+                aria-controls="company3"
+                onclick="stepFunction(event)"
+              >
+                2
+              </button>
+              <span
+                class="bg-success w-25 rounded mt-auto mb-auto me-1 ms-1"
+                style="height: 0.2rem"
+              >
+              </span>
+              <button
+                class="btn bg-success text-white btn-sm rounded-pill"
+                style="width: 2rem; height: 2rem"
+                data-bs-toggle="collapse"
+                data-bs-target="#company3"
+                aria-expanded="false"
+                aria-controls="company3"
+                onclick="stepFunction(event)"
+              >
+                3
+              </button>
+              <span
+                class="bg-success w-25 rounded mt-auto mb-auto me-1 ms-1"
+                style="height: 0.2rem"
+              >
+              </span>
+              <button
+                class="btn bg-success text-white btn-sm rounded-pill"
+                style="width: 2rem; height: 2rem"
+                data-bs-toggle="collapse"
+                data-bs-target="#company4"
+                aria-expanded="false"
+                aria-controls="company4"
+                onclick="stepFunction(event)"
+              >
+                4
+              </button>
+            </div>
           </div>
-          <div class="col-md-8 text-center">
-            <ul class="list-group list-group-horizontal fs-2">
-              <li class="list-group-item w-25 bg-primary">
-                <a href="#" class="bi bi-linkedin text-white"></a>
-              </li>
-              <li class="list-group-item w-25 bg-black">
-                <a href="#" class="bi bi-github text-white"></a>
-              </li>
-              <li class="list-group-item w-25 bg-primary">
-                <a href="#" class="bi bi-twitter text-white"></a>
-              </li>
-              <li class="list-group-item w-25 bg-danger">
-                <a href="#" class="bi bi-youtube text-white"></a>
-              </li>
-            </ul>
-            <nav class="navbar navbar-dark navbar-expand">
-              <ul class="navbar-nav w-100">
-                <li class="nav-link w-25 text-nowrap">
-                  <a href="#aboutMe">About Me</a>
-                </li>
-                <li class="nav-link w-25 text-nowrap">
-                  <a href="#experience"> Experience</a>
-                </li>
-                <li class="nav-link w-25 text-nowrap">
-                  <a href="#education">Education</a>
-                </li>
-                <li class="nav-link w-25 text-nowrap">
-                  <a href="#contactme">Contact Me</a>
-                </li>
-              </ul>
-            </nav>
+
+          <div class="collapse show" id="company1">
+            <div class="display-4">Company 1</div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+              ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.
+            </p>
+          </div>
+          <div class="collapse" id="company2">
+            <div class="display-4">Company 2</div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+              ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.
+            </p>
+          </div>
+          <div class="collapse" id="company3">
+            <div class="display-4">Company 3</div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+              ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.
+            </p>
+          </div>
+          <div class="collapse" id="company4">
+            <div class="display-4">Company 4</div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+              ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.
+            </p>
           </div>
         </div>
-        <figcaption class="figure-caption"><strong>NameXYZ</strong></figcaption>
       </div>
-    </div> -->
+    </div>
     <div class="p-5 bg-primary-subtle text-white rounded" id="aboutMe">
       <h1>About Me</h1>
       <p>
@@ -169,12 +261,17 @@
         element.dataset.bsTheme =
           element.dataset.bsTheme == "light" ? "dark" : "light";
       }
+      function stepFunction(event) {
+        debugger;
+        var element = document.getElementsByClassName("collapse");
+        for (var i = 0; i < element.length; i++) {
+          if (element[i] !== event.target.ariaControls) {
+            element[i].classList.remove("show");
+          }
+        }
+      }
     </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
       integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
