@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+      integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body data-bs-theme="dark">
+    <div class="form-check form-switch mx-4">
+      <input
+        class="form-check-input p-2"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckChecked"
+        checked
+        onclick="myFunction()"
+      />
+    </div>
+    <!-- <div class="p-5 bg-light text-white rounded">
+      <div class="container mt-2 p-4">
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <img
+              src="/images/profilepic.jpg"
+              class="figure-img rounded"
+              alt="profile"
+            />
+          </div>
+          <div class="col-md-8 text-center">
+            <ul class="list-group list-group-horizontal fs-2">
+              <li class="list-group-item w-25 bg-primary">
+                <a href="#" class="bi bi-linkedin text-white"></a>
+              </li>
+              <li class="list-group-item w-25 bg-black">
+                <a href="#" class="bi bi-github text-white"></a>
+              </li>
+              <li class="list-group-item w-25 bg-primary">
+                <a href="#" class="bi bi-twitter text-white"></a>
+              </li>
+              <li class="list-group-item w-25 bg-danger">
+                <a href="#" class="bi bi-youtube text-white"></a>
+              </li>
+            </ul>
+            <nav class="navbar navbar-dark navbar-expand">
+              <ul class="navbar-nav w-100">
+                <li class="nav-link w-25 text-nowrap">
+                  <a href="#aboutMe">About Me</a>
+                </li>
+                <li class="nav-link w-25 text-nowrap">
+                  <a href="#experience"> Experience</a>
+                </li>
+                <li class="nav-link w-25 text-nowrap">
+                  <a href="#education">Education</a>
+                </li>
+                <li class="nav-link w-25 text-nowrap">
+                  <a href="#contactme">Contact Me</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <figcaption class="figure-caption"><strong>NameXYZ</strong></figcaption>
+      </div>
+    </div> -->
+    <div class="p-5 bg-primary-subtle text-white rounded" id="aboutMe">
+      <h1>About Me</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </div>
+    <div class="p-5 rounded" id="experience">
+      <h1 class="display-4">Experience</h1>
+      <div class="d-lg-flex justify-content-around">
+        <div class="card m-2">
+          <div class="card-header text-center bg-body-secondary text-primary">
+            <strong> Test</strong>
+          </div>
+          <div class="card-body">
+            <p class="card-text lead">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+        <div class="card m-2">
+          <div class="card-header">test</div>
+          <div class="card-body">
+            <p class="card-text lead">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+        <div class="card m-2">
+          <div class="card-header">test</div>
+          <div class="card-body">
+            <p class="card-text lead">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+
+        <div class="card m-2">
+          <div class="card-header">test</div>
+          <div class="card-body">
+            <p class="card-text lead">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-5 bg-secondary text-white rounded" id="education">
+      <h1>Education</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </div>
+    <div class="p-5 bg-dark-subtle text-white rounded" id="contactme">
+      <h1>About Me</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </div>
+
+    <script>
+      function myFunction() {
+        var element = document.body;
+        element.dataset.bsTheme =
+          element.dataset.bsTheme == "light" ? "dark" : "light";
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
