@@ -52,6 +52,25 @@
         color: inherit;
       }
 
+      .skip-link {
+        position: absolute;
+        z-index: 10;
+        top: 8px;
+        left: 8px;
+        transform: translateY(-150%);
+        padding: 9px 12px;
+        border-radius: 3px;
+        background: var(--ink);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
       button {
         font: inherit;
       }
@@ -409,23 +428,90 @@
         font-size: 13px;
       }
 
-      .skill-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 9px;
+      .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
         margin: 0;
         padding: 0;
         list-style: none;
       }
 
-      .skill-list li {
-        padding: 7px 11px;
+      .capability-card {
+        min-height: 220px;
+        padding: 16px;
         border: 1px solid var(--line);
-        border-radius: 3px;
+        border-radius: 4px;
         background: var(--surface);
-        color: var(--ink);
+      }
+
+      .capability-icon {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        margin-bottom: 12px;
+        border-radius: 4px;
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .capability-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.7;
+      }
+
+      .capability-card h3 {
+        margin-bottom: 4px;
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .capability-card p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      .capability-context {
+        max-width: 46ch;
+        margin: -7px 0 17px;
+        color: var(--muted);
         font-size: 12px;
-        font-weight: 600;
+        line-height: 1.55;
+      }
+
+      .capability-details {
+        display: grid;
+        gap: 6px;
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .capability-details li {
+        position: relative;
+        padding-left: 11px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .capability-details li::before {
+        position: absolute;
+        top: 0.55em;
+        left: 0;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--accent);
+        content: "";
       }
 
       .contact-section {
@@ -462,8 +548,23 @@
       }
 
       :focus-visible {
-        outline: 3px solid #91b84f;
-        outline-offset: 4px;
+        outline: 3px solid var(--ink);
+        outline-offset: 3px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
       }
 
       @media (max-width: 760px) {
@@ -627,6 +728,7 @@
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header">
       <div class="shell header-inner">
         <a class="wordmark" href="#top" aria-label="Your Name, home"
@@ -644,8 +746,8 @@
       </div>
     </header>
 
-    <main id="top" class="shell">
-      <section class="hero" aria-labelledby="intro-title">
+    <main id="main-content" class="shell" tabindex="-1">
+      <section id="top" class="hero" aria-labelledby="intro-title">
         <div class="hero-copy">
           <p class="eyebrow">Resume &amp; portfolio</p>
           <h1 id="intro-title">Hello, I'm <span>Your Name.</span></h1>
@@ -742,7 +844,10 @@
         </div>
       </section>
 
-      <section class="section two-column" aria-label="Education and skills">
+      <section
+        class="section two-column"
+        aria-label="Education and engineering focus"
+      >
         <div id="education">
           <p class="section-kicker">The foundations</p>
           <h2>Education</h2>
@@ -753,14 +858,82 @@
           </article>
         </div>
         <div id="skills">
-          <p class="section-kicker">What I bring</p>
-          <h2>Skills</h2>
-          <ul class="skill-list" aria-label="Skills">
-            <li>[Core skill]</li>
-            <li>[Specialty]</li>
-            <li>[Tool or technology]</li>
-            <li>[Collaboration skill]</li>
-            <li>[Add another skill]</li>
+          <p class="section-kicker">What I build for</p>
+          <h2>Engineering focus</h2>
+          <p class="capability-context">
+            This portfolio uses static delivery and needs no login or analytics.
+            The other practices belong where a product's risks and needs call
+            for them.
+          </p>
+          <ul class="capability-grid" aria-label="Engineering focus areas">
+            <li class="capability-card">
+              <span class="capability-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <circle cx="12" cy="4.5" r="2" />
+                  <path d="M5 9h14M12 7v12m-5 0 5-5 5 5M8 9l-2 5m10-5 2 5" />
+                </svg>
+              </span>
+              <h3>Accessibility</h3>
+              <p>Make every interaction perceivable and operable.</p>
+              <ul class="capability-details">
+                <li>Semantic landmarks and meaningful names</li>
+                <li>Keyboard-visible focus and reduced motion</li>
+              </ul>
+            </li>
+            <li class="capability-card">
+              <span class="capability-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M8 5h12M8 12h12M8 19h12" />
+                  <circle cx="4" cy="5" r="1" />
+                  <circle cx="4" cy="12" r="1" />
+                  <circle cx="4" cy="19" r="1" />
+                </svg>
+              </span>
+              <h3>Logging</h3>
+              <p>
+                Make production behavior observable without collecting noise.
+              </p>
+              <ul class="capability-details">
+                <li>Structured events with trace context</li>
+                <li>Redact secrets and personal data</li>
+              </ul>
+            </li>
+            <li class="capability-card">
+              <span class="capability-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M12 3 20 6v5c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-3Z"
+                  />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </span>
+              <h3>Auth &amp; authorization</h3>
+              <p>
+                Verify identity, then enforce access at the resource boundary.
+              </p>
+              <ul class="capability-details">
+                <li>Standards-based identity and short-lived sessions</li>
+                <li>Server-side checks and least privilege</li>
+              </ul>
+            </li>
+            <li class="capability-card">
+              <span class="capability-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <rect x="9" y="3" width="6" height="5" rx="1" />
+                  <rect x="3" y="16" width="6" height="5" rx="1" />
+                  <rect x="15" y="16" width="6" height="5" rx="1" />
+                  <path d="M12 8v4M6 16v-4h12v4" />
+                </svg>
+              </span>
+              <h3>System design</h3>
+              <p>
+                Choose the simplest architecture that meets the constraints.
+              </p>
+              <ul class="capability-details">
+                <li>Static hosting for this content-first portfolio</li>
+                <li>Add services only when scale or capability needs them</li>
+              </ul>
+            </li>
           </ul>
         </div>
       </section>
