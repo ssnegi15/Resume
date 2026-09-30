@@ -1,0 +1,115 @@
+name: Build and deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate page structure and links
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          source = Path("index.html").read_text(encoding="utf-8")
+
+          class PageCheck(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.tags = set()
+                  self.ids = set()
+                  self.fragments = []
+                  self.errors = []
+                  self.in_title = False
+                  self.title = []
+                  self.has_doctype = False
+
+              def handle_decl(self, decl):
+                  self.has_doctype = decl.lower() == "doctype html"
+
+              def handle_starttag(self, tag, attrs):
+                  self.tags.add(tag)
+                  attributes = dict(attrs)
+                  element_id = attributes.get("id")
+                  if element_id:
+                      if element_id in self.ids:
+                          self.errors.append(f"Duplicate id: {element_id}")
+                      self.ids.add(element_id)
+                  href = attributes.get("href", "")
+                  if href.startswith("#") and len(href) > 1:
+                      self.fragments.append(href[1:])
+                  if tag == "title":
+                      self.in_title = True
+
+              def handle_endtag(self, tag):
+                  if tag == "title":
+                      self.in_title = False
+
+              def handle_data(self, data):
+                  if self.in_title:
+                      self.title.append(data)
+
+          page = PageCheck()
+          page.feed(source)
+          page.close()
+
+          if not page.has_doctype:
+              page.errors.append("index.html must include an HTML5 doctype")
+          required_tags = {"html", "head", "title", "body", "main"}
+          missing_tags = required_tags - page.tags
+          if missing_tags:
+              page.errors.append(f"Missing required tags: {', '.join(sorted(missing_tags))}")
+          if not "".join(page.title).strip():
+              page.errors.append("The page title must not be empty")
+          for fragment in page.fragments:
+              if fragment not in page.ids:
+                  page.errors.append(f"Broken internal link: #{fragment}")
+
+          if page.errors:
+              raise SystemExit("\n".join(page.errors))
+          print("index.html structure and internal links are valid")
+          PY
+
+      - name: Prepare static site
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
