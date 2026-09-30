@@ -400,19 +400,8 @@
         font-size: 14px;
       }
 
-      .two-column {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 72px;
-      }
-
-      .two-column h2 {
-        margin-bottom: 18px;
-        font-size: clamp(30px, 4vw, 42px);
-        line-height: 1.15;
-      }
-
       .education-entry {
+        max-width: 680px;
         padding-top: 18px;
         border-top: 1px solid var(--line);
       }
@@ -428,37 +417,79 @@
         font-size: 13px;
       }
 
-      .capability-grid {
+      .engineering-section {
+        position: relative;
+        isolation: isolate;
+        padding-block: 68px;
+      }
+
+      .engineering-section::before {
+        position: absolute;
+        z-index: -1;
+        inset-block: 0;
+        left: 50%;
+        width: 100vw;
+        transform: translateX(-50%);
+        background: #1d3934;
+        content: "";
+      }
+
+      .engineering-heading {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
+        grid-template-columns: 1fr minmax(250px, 0.65fr);
+        align-items: end;
+        gap: 24px;
+        margin-bottom: 30px;
+      }
+
+      .engineering-heading .section-kicker {
+        grid-column: 1 / -1;
+        margin-bottom: -14px;
+        color: var(--highlight);
+      }
+
+      .engineering-heading h2 {
         margin: 0;
-        padding: 0;
-        list-style: none;
+        color: #f2f5ee;
+        font-size: clamp(30px, 4vw, 42px);
+        line-height: 1.15;
       }
 
-      .capability-card {
-        min-height: 220px;
-        padding: 16px;
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: var(--surface);
+      .engineering-context {
+        margin: 0;
+        color: #c3d0c8;
+        font-size: 13px;
+        line-height: 1.6;
       }
 
-      .capability-icon {
+      .engineering-grid {
         display: grid;
-        width: 34px;
-        height: 34px;
-        place-items: center;
-        margin-bottom: 12px;
-        border-radius: 4px;
-        background: var(--accent-soft);
-        color: var(--accent);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
       }
 
-      .capability-icon svg {
-        width: 20px;
-        height: 20px;
+      .engineering-card {
+        min-height: 276px;
+        padding: 20px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.17);
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .engineering-icon {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        margin-bottom: 17px;
+        border-radius: 4px;
+        background: var(--highlight);
+        color: var(--ink);
+      }
+
+      .engineering-icon svg {
+        width: 24px;
+        height: 24px;
         fill: none;
         stroke: currentColor;
         stroke-linecap: round;
@@ -466,51 +497,45 @@
         stroke-width: 1.7;
       }
 
-      .capability-card h3 {
-        margin-bottom: 4px;
-        font-size: 14px;
+      .engineering-card h3 {
+        margin-bottom: 8px;
+        color: #f2f5ee;
+        font-size: 17px;
         line-height: 1.3;
       }
 
-      .capability-card p {
-        margin-bottom: 0;
-        color: var(--muted);
-        font-size: 11px;
-        line-height: 1.5;
-      }
-
-      .capability-context {
-        max-width: 46ch;
-        margin: -7px 0 17px;
-        color: var(--muted);
-        font-size: 12px;
+      .engineering-card > p {
+        margin-bottom: 14px;
+        color: #c3d0c8;
+        font-size: 13px;
         line-height: 1.55;
       }
 
-      .capability-details {
+      .engineering-details {
         display: grid;
-        gap: 6px;
-        margin: 12px 0 0;
-        padding: 0;
+        gap: 8px;
+        margin: 0;
+        padding: 12px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.17);
         list-style: none;
       }
 
-      .capability-details li {
+      .engineering-details li {
         position: relative;
-        padding-left: 11px;
-        color: var(--muted);
-        font-size: 11px;
-        line-height: 1.4;
+        padding-left: 13px;
+        color: #e0e7e1;
+        font-size: 12px;
+        line-height: 1.5;
       }
 
-      .capability-details li::before {
+      .engineering-details li::before {
         position: absolute;
         top: 0.55em;
         left: 0;
-        width: 4px;
-        height: 4px;
+        width: 5px;
+        height: 5px;
         border-radius: 50%;
-        background: var(--accent);
+        background: var(--highlight);
         content: "";
       }
 
@@ -629,9 +654,21 @@
           padding-block: 21px 24px;
         }
 
-        .two-column {
+        .engineering-section {
+          padding-block: 56px;
+        }
+
+        .engineering-heading {
           grid-template-columns: 1fr;
-          gap: 44px;
+          gap: 12px;
+        }
+
+        .engineering-heading .section-kicker {
+          margin-bottom: -4px;
+        }
+
+        .engineering-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .contact-section {
@@ -660,6 +697,16 @@
         .print-button {
           padding-inline: 10px;
           font-size: 11px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .engineering-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .engineering-card {
+          min-height: 0;
         }
       }
 
@@ -716,6 +763,32 @@
           break-inside: avoid;
         }
 
+        .engineering-section::before {
+          display: none;
+        }
+
+        .engineering-heading h2,
+        .engineering-card h3 {
+          color: #111;
+        }
+
+        .engineering-context,
+        .engineering-card > p,
+        .engineering-details li {
+          color: #444;
+        }
+
+        .engineering-card {
+          min-height: 0;
+          border-color: #ccc;
+          background: #fff;
+          break-inside: avoid;
+        }
+
+        .engineering-details {
+          border-color: #ccc;
+        }
+
         .profile-panel {
           box-shadow: none;
           print-color-adjust: exact;
@@ -737,7 +810,7 @@
         <nav class="site-nav" aria-label="Main navigation">
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
-          <a href="#skills">Skills</a>
+          <a href="#skills">Engineering</a>
           <a href="#contact">Contact</a>
         </nav>
         <button class="print-button" type="button" onclick="window.print()">
@@ -845,97 +918,103 @@
       </section>
 
       <section
-        class="section two-column"
-        aria-label="Education and engineering focus"
+        class="engineering-section"
+        id="skills"
+        aria-labelledby="engineering-title"
       >
-        <div id="education">
-          <p class="section-kicker">The foundations</p>
-          <h2>Education</h2>
-          <article class="education-entry">
-            <h3>[Degree or qualification]</h3>
-            <p>[School or institution]</p>
-            <p>[Field of study] | [Graduation year]</p>
+        <div class="engineering-heading">
+          <p class="section-kicker">What I build for</p>
+          <h2 id="engineering-title">Engineering, in practice</h2>
+          <p class="engineering-context">
+            This portfolio uses static delivery: no login, analytics, or backend
+            is needed. The details below show how I approach each concern where
+            it fits.
+          </p>
+        </div>
+        <div class="engineering-grid">
+          <article class="engineering-card">
+            <span class="engineering-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="4.5" r="2" />
+                <path d="M5 9h14M12 7v12m-5 0 5-5 5 5M8 9l-2 5m10-5 2 5" />
+              </svg>
+            </span>
+            <h3>Accessibility</h3>
+            <p>Make every interaction perceivable and operable.</p>
+            <ul class="engineering-details">
+              <li>Semantic landmarks and meaningful names</li>
+              <li>Skip navigation and visible keyboard focus</li>
+              <li>Respect reduced-motion preferences</li>
+            </ul>
+          </article>
+          <article class="engineering-card">
+            <span class="engineering-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M8 5h12M8 12h12M8 19h12" />
+                <circle cx="4" cy="5" r="1" />
+                <circle cx="4" cy="12" r="1" />
+                <circle cx="4" cy="19" r="1" />
+              </svg>
+            </span>
+            <h3>Logging</h3>
+            <p>Make production behavior observable without collecting noise.</p>
+            <ul class="engineering-details">
+              <li>Structured events with severity and trace context</li>
+              <li>Useful signals, not high-volume noise</li>
+              <li>Redact credentials and personal data</li>
+            </ul>
+          </article>
+          <article class="engineering-card">
+            <span class="engineering-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path
+                  d="M12 3 20 6v5c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-3Z"
+                />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </span>
+            <h3>Auth &amp; authorization</h3>
+            <p>
+              Verify identity, then enforce access at the resource boundary.
+            </p>
+            <ul class="engineering-details">
+              <li>Use established identity standards and secure sessions</li>
+              <li>Check permissions server-side for each resource</li>
+              <li>Default to least privilege</li>
+            </ul>
+          </article>
+          <article class="engineering-card">
+            <span class="engineering-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <rect x="9" y="3" width="6" height="5" rx="1" />
+                <rect x="3" y="16" width="6" height="5" rx="1" />
+                <rect x="15" y="16" width="6" height="5" rx="1" />
+                <path d="M12 8v4M6 16v-4h12v4" />
+              </svg>
+            </span>
+            <h3>System design</h3>
+            <p>Choose the simplest architecture that meets the constraints.</p>
+            <ul class="engineering-details">
+              <li>Static hosting keeps this portfolio fast and simple</li>
+              <li>No database or API without a real product need</li>
+              <li>Add service boundaries as scale or capability requires</li>
+            </ul>
           </article>
         </div>
-        <div id="skills">
-          <p class="section-kicker">What I build for</p>
-          <h2>Engineering focus</h2>
-          <p class="capability-context">
-            This portfolio uses static delivery and needs no login or analytics.
-            The other practices belong where a product's risks and needs call
-            for them.
-          </p>
-          <ul class="capability-grid" aria-label="Engineering focus areas">
-            <li class="capability-card">
-              <span class="capability-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <circle cx="12" cy="4.5" r="2" />
-                  <path d="M5 9h14M12 7v12m-5 0 5-5 5 5M8 9l-2 5m10-5 2 5" />
-                </svg>
-              </span>
-              <h3>Accessibility</h3>
-              <p>Make every interaction perceivable and operable.</p>
-              <ul class="capability-details">
-                <li>Semantic landmarks and meaningful names</li>
-                <li>Keyboard-visible focus and reduced motion</li>
-              </ul>
-            </li>
-            <li class="capability-card">
-              <span class="capability-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path d="M8 5h12M8 12h12M8 19h12" />
-                  <circle cx="4" cy="5" r="1" />
-                  <circle cx="4" cy="12" r="1" />
-                  <circle cx="4" cy="19" r="1" />
-                </svg>
-              </span>
-              <h3>Logging</h3>
-              <p>
-                Make production behavior observable without collecting noise.
-              </p>
-              <ul class="capability-details">
-                <li>Structured events with trace context</li>
-                <li>Redact secrets and personal data</li>
-              </ul>
-            </li>
-            <li class="capability-card">
-              <span class="capability-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path
-                    d="M12 3 20 6v5c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-3Z"
-                  />
-                  <path d="m9 12 2 2 4-4" />
-                </svg>
-              </span>
-              <h3>Auth &amp; authorization</h3>
-              <p>
-                Verify identity, then enforce access at the resource boundary.
-              </p>
-              <ul class="capability-details">
-                <li>Standards-based identity and short-lived sessions</li>
-                <li>Server-side checks and least privilege</li>
-              </ul>
-            </li>
-            <li class="capability-card">
-              <span class="capability-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <rect x="9" y="3" width="6" height="5" rx="1" />
-                  <rect x="3" y="16" width="6" height="5" rx="1" />
-                  <rect x="15" y="16" width="6" height="5" rx="1" />
-                  <path d="M12 8v4M6 16v-4h12v4" />
-                </svg>
-              </span>
-              <h3>System design</h3>
-              <p>
-                Choose the simplest architecture that meets the constraints.
-              </p>
-              <ul class="capability-details">
-                <li>Static hosting for this content-first portfolio</li>
-                <li>Add services only when scale or capability needs them</li>
-              </ul>
-            </li>
-          </ul>
+      </section>
+
+      <section class="section" id="education" aria-labelledby="education-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">The foundations</p>
+            <h2 id="education-title">Education</h2>
+          </div>
         </div>
+        <article class="education-entry">
+          <h3>[Degree or qualification]</h3>
+          <p>[School or institution]</p>
+          <p>[Field of study] | [Graduation year]</p>
+        </article>
       </section>
 
       <section
